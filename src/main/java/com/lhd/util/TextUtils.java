@@ -23,7 +23,7 @@ public class TextUtils {
 	 * @return
 	 */
 	public static String getConfig(String key, Object object){
-		 InputStream inputStream = object.getClass().getClassLoader().getResourceAsStream("system.properties");
+		 InputStream inputStream = object.getClass().getClassLoader().getResourceAsStream("jdbc.properties");
 		  Properties p = new Properties();
 		  try {
 			  p.load(inputStream);

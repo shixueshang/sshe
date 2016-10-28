@@ -11,15 +11,18 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Resource
 	private HibernateDao userDao;
 
+	@Override
 	public void insert(User user) {
 		userDao.save(user);
 	}
 
+	@Override
 	public void delete(Integer userId) {
 		userDao.remove(userDao.get(User.class, userId));
 	}

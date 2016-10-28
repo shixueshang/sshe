@@ -14,6 +14,7 @@ public class Constants {
      */
     public static final Integer DEFAULT_PAGE_SIZE = 25;
 
+    public static final String ADMIN_USER = "admin";
 
     /**
      * 服务器返回状态

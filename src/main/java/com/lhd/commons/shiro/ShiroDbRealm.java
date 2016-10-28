@@ -1,12 +1,15 @@
 package com.lhd.commons.shiro;
 
 
+import com.lhd.bean.User;
+import com.lhd.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
+import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +17,9 @@ import java.util.Set;
  * shiro权限认证
  */
 public class ShiroDbRealm extends AuthorizingRealm {
+
+    @Resource
+    private UserService userService;
 
 
     /**
@@ -23,9 +29,13 @@ public class ShiroDbRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         // 账号不存在
+        User user  = userService.findUserByLoginName(token.getUsername());
+        if(user == null){
+            return null;
+        }
 
         // 认证缓存信息
-        return new SimpleAuthenticationInfo(null, null, getName());
+        return new SimpleAuthenticationInfo(user, user.getPassword().toCharArray(), getName());
 
     }
 
@@ -35,9 +45,25 @@ public class ShiroDbRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 
-       // Admin shiroAdmin = (Admin) principals.getPrimaryPrincipal();
+        User shiroUser = (User) principals.getPrimaryPrincipal();
         Set<String> urlSet = new HashSet<String>();
         //超级管理员获得所有权限
+        /*if(shiroUser.getLoginName().equals(Constants.ADMIN_USER)){
+            List<SystemModule> modules = adminModuleService.findAllModules();
+            for(SystemModule module : modules){
+                if (StringUtils.isNoneBlank(module.getUrl())) {
+                    urlSet.add(module.getUrl());
+                }
+            }
+        }else{
+            List<SystemRoleModule> roleResourceList = adminModuleService.findModulesByAdminRole(shiroAdmin.getRole());
+            for (SystemRoleModule systemAdminModule : roleResourceList) {
+                SystemModule module = adminModuleService.getSystemModule(systemAdminModule.getModuleId());
+                if (StringUtils.isNoneBlank(module.getUrl())) {
+                    urlSet.add(module.getUrl());
+                }
+            }
+        }*/
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.addStringPermissions(urlSet);

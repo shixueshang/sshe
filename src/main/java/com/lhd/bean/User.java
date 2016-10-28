@@ -7,24 +7,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "USER")
 public class User implements java.io.Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, length = 11)
+    @Column(name = "ID", nullable = false, length = 11)
     private Integer id;
 
-    @Column(name = "login_name")
+    @Column(name = "LOGIN_NAME")
     private String loginName;
 
-    @Column(name = "display_name")
+    @Column(name = "DISPLAY_NAME")
     private String displayName;
 
-    @Column(name = "password")
+    @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "is_valid")
+    @Column(name = "IS_VALID")
     private boolean isValid;
 
     public Integer getId() {

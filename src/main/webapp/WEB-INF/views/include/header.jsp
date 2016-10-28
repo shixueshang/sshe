@@ -7,8 +7,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>vbbs</title>
-	<!-- css -->
+	<title>sshe</title>
+    <link href="<%=request.getContextPath()%>/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" media="screen"/>
+    <link href="<%=request.getContextPath()%>/static/images/favicon.ico" rel="bookmark" type="image/x-icon" media="screen"/>
+
+    <!-- css -->
 	<link rel="stylesheet" href="<%=contextPath%>/static/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="<%=contextPath%>/static/css/bootstrap/bootstrap-fileupload.css">
     <link rel="stylesheet" href="<%=contextPath%>/static/css/smart/timeline.css" rel="stylesheet">

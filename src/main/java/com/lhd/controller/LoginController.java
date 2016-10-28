@@ -2,6 +2,7 @@ package com.lhd.controller;
 
 import com.lhd.bean.User;
 import com.lhd.service.UserService;
+import com.lhd.util.RandomCode;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
 
 /**
@@ -35,12 +38,38 @@ public class LoginController extends BaseController {
         return "index";
     }
 
+    /**
+     * 获得图片验证码
+     * @throws Exception
+     */
+    @RequestMapping(value = "/login/getVerifyCode", method = RequestMethod.GET)
+    public void getVerifyCode() throws Exception {
+        //禁止缓存
+        response.setHeader("Pragma", "No-cache");
+        response.setHeader("Cache-Control", "No-cache");
+        response.setDateHeader("Expires", 0);
+        response.setContentType("image/jpeg");
+        response.setBufferSize(2048);
+        RandomCode rCode = new RandomCode();
+        BufferedImage image = rCode.createImage();
+        String randomCode = RandomCode.strCode;
+        session.setAttribute("randomCode", randomCode);
+        ImageIO.write(image,"JPEG",response.getOutputStream());
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(String username, String password, String code) {
         ModelAndView mav = new ModelAndView();
         if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password) || org.apache.commons.lang.StringUtils.isEmpty(code)) {
             mav.setViewName("index");
             mav.addObject("error", "用户名/密码/验证码不能为空");
+            return mav;
+        }
+
+        String randomCode = (String)session.getAttribute("randomCode");
+        if(!code.toUpperCase().equals(randomCode)){
+            mav.setViewName("index");
+            mav.addObject("error", "验证码输入错误");
             return mav;
         }
 
