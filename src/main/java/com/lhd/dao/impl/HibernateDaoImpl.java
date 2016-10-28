@@ -67,7 +67,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return query;
     }
 
-    protected Query buildQuery(boolean isSql, String ql, Object[] values) {
+    protected Query buildQuery(boolean isSql, String ql, Object... values) {
         int paramCnt = 0;
         if (values.length > 0) {
             Matcher m = PLACE_HOLDER.matcher(ql);
@@ -96,7 +96,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return nmb.intValue();
     }
 
-    public int count(String hql, Object[] values) {
+    public int count(String hql, Object... values) {
         hql = buildCountingHql(hql);
         Number nmb = this.findUnique(hql, values);
         return nmb.intValue();
@@ -109,7 +109,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return nmb.intValue();
     }
 
-    public int countBySql(String sql, Object[] values) {
+    public int countBySql(String sql, Object... values) {
         sql = ORDER.matcher(sql).replaceFirst("");
         sql = "Select Count(*) From (" + sql + ")";
         Number nmb = this.findUniqueBySql(sql, values);
@@ -127,7 +127,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return ret;
     }
 
-    public <T> List<T> find(String hql, Object[] values) {
+    public <T> List<T> find(String hql, Object... values) {
         Query q = buildQuery(false, hql, values);
 
         List ret = q.list();
@@ -147,7 +147,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return ret;
     }
 
-    public <T> List<T> findBySql(String sql, Object[] values) {
+    public <T> List<T> findBySql(String sql, Object... values) {
         Query q = buildQuery(true, sql, values);
 
         List ret = q.list();
@@ -161,7 +161,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return ret;
     }
 
-    public List<Map<String, Object>> findMapBySql(String sql, Object[] values) {
+    public List<Map<String, Object>> findMapBySql(String sql, Object... values) {
         Query query = buildQuery(true, sql, values);
 
         List ret = query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
@@ -175,11 +175,10 @@ public class HibernateDaoImpl implements HibernateDao {
         return ret;
     }
 
-    public List<Map<String, Object>> findMapBySqlAndRawAliases(String sql, Object[] vars) {
+    public List<Map<String, Object>> findMapBySqlAndRawAliases(String sql, Object... vars) {
         Query query = buildQuery(true, sql, vars);
 
-        List ret = query.setResultTransformer(CacheableTransformerFactory.createForSql(sql))
-                .list();
+        List ret = query.setResultTransformer(CacheableTransformerFactory.createForSql(sql)).list();
         return ret;
     }
 
@@ -191,7 +190,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return new Page(page, pageSize, totalCount, items);
     }
 
-    public <T> Page<T> findPage(String hql, int page, int pageSize, Object[] values) {
+    public <T> Page<T> findPage(String hql, int page, int pageSize, Object... values) {
         int totalCount = count(hql, values);
         Query q = buildQuery(false, hql, values).setFirstResult((page - 1) * pageSize).setMaxResults(pageSize);
 
@@ -207,7 +206,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return new Page(page, pageSize, totalCount, items);
     }
 
-    public <T> Page<T> findPageBySql(String sql, int page, int pageSize, Object[] values) {
+    public <T> Page<T> findPageBySql(String sql, int page, int pageSize, Object... values) {
         int totalCount = countBySql(sql, values);
         Query q = buildQuery(true, sql, values).setFirstResult((page - 1) * pageSize).setMaxResults(pageSize);
 
@@ -224,7 +223,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return new Page(page, pageSize, totalCount, items);
     }
 
-    public Page<Map<String, Object>> findPageOfMapBySql(String sql, int page, int pageSize, Object[] values) {
+    public Page<Map<String, Object>> findPageOfMapBySql(String sql, int page, int pageSize, Object... values) {
         int totalCount = countBySql(sql, values);
         Query q = buildQuery(true, sql, values).setFirstResult((page - 1) * pageSize).setMaxResults(pageSize)
                 .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
@@ -242,7 +241,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return new Page(page, pageSize, totalCount, items);
     }
 
-    public Page<Map<String, Object>> findPageOfMapBySqlAndRawAliases(String sql, int page, int pageSize, Object[] values) {
+    public Page<Map<String, Object>> findPageOfMapBySqlAndRawAliases(String sql, int page, int pageSize, Object... values) {
         int totalCount = countBySql(sql, values);
         Query q = buildQuery(true, sql, values).setFirstResult((page - 1) * pageSize).setMaxResults(pageSize)
                 .setResultTransformer(CacheableTransformerFactory.createForSql(sql));
@@ -258,7 +257,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return (T) ret;
     }
 
-    public <T> T findUnique(String hql, Object[] values) {
+    public <T> T findUnique(String hql, Object... values) {
         Query q = buildQuery(false, hql, values);
 
         Object ret = q.uniqueResult();
@@ -270,7 +269,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return (T) ret;
     }
 
-    public <T> T findUniqueBySql(String sql, Object[] values) {
+    public <T> T findUniqueBySql(String sql, Object... values) {
         Object ret = buildQuery(true, sql, values).uniqueResult();
         return (T) ret;
     }
@@ -346,7 +345,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return q.executeUpdate();
     }
 
-    public int update(String hql, Object[] values) {
+    public int update(String hql, Object... values) {
         Query q = buildQuery(false, hql, values);
         return q.executeUpdate();
     }
@@ -356,7 +355,7 @@ public class HibernateDaoImpl implements HibernateDao {
         return q.executeUpdate();
     }
 
-    public int updateBySql(String sql, Object[] values) {
+    public int updateBySql(String sql, Object... values) {
         Query q = buildQuery(true, sql, values);
         return q.executeUpdate();
     }

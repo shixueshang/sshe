@@ -8,4 +8,6 @@ public interface UserService {
 	void insert(User user);
 	
 	void delete(Integer userId);
+
+	User findUserByLoginName(String loginName);
 }

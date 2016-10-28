@@ -15,10 +15,13 @@
                     <form role="form" action="/login" method="post">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="用户名" name="username" type="text" autofocus>
+                                <input type="text"  class="form-control" placeholder="用户名" name="username" autofocus>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="密码" name="password" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="验证码" name="code" value="" />
                             </div>
                             <button type="submit" class="btn btn-lg btn-success btn-block">登录</button>
                         </fieldset>

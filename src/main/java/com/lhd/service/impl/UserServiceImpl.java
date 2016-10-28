@@ -24,4 +24,9 @@ public class UserServiceImpl implements UserService {
 		userDao.remove(userDao.get(User.class, userId));
 	}
 
+	@Override
+	public User findUserByLoginName(String loginName) {
+		return userDao.findUnique("from User where loginName = ?", loginName);
+	}
+
 }

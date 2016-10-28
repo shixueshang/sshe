@@ -3,7 +3,7 @@ package com.lhd.util;
 import java.util.List;
 import java.util.Map;
 
-public class ApiJsonResult {
+public class AjaxJson {
 	
 	private int code ;
 	private List<Map<String, Object>> list;
@@ -11,30 +11,30 @@ public class ApiJsonResult {
 	private String message = "";
 	private Object data;
 	
-	public ApiJsonResult(){
+	public AjaxJson(){
 		super();
 	}
 	
-	public ApiJsonResult(int code) {
+	public AjaxJson(int code) {
         this.code = code;
     }
 	
-	public ApiJsonResult(int code, List<Map<String, Object>> list) {
+	public AjaxJson(int code, List<Map<String, Object>> list) {
         this.code = code;
         this.list = list;
     }
 	
-	public ApiJsonResult(int code, Map<String, Object> map) {
+	public AjaxJson(int code, Map<String, Object> map) {
         this.code = code;
         this.map = map;
     }
 	
-	public ApiJsonResult(int code, String message) {
+	public AjaxJson(int code, String message) {
         this.code = code;
         this.message = message;
     }
 	
-	public ApiJsonResult(int code, Object data) {
+	public AjaxJson(int code, Object data) {
 	    this.code = code;
 	    this.data = data;
 	}

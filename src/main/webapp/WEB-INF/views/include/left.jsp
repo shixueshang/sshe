@@ -32,62 +32,16 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="#"><i class="fa fa-th-list fa-fw"></i> 帖子管理<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-th-list fa-fw"></i> 系统管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li class="active">
-                                <a href="/section/list"> 版块列表</a>
+                                <a href="/user/list"> 用户列表</a>
                             </li>
                             <li class="active">
-                                <a href="/section/pub"> 版块添加</a>
-                            </li>
-                            <li class="active">
-                                <a href="/post/list"> 帖子列表</a>
-                            </li>
-                            <li class="active">
-                                <a href="/post/publish"> 发帖</a>
+                                <a href="/user/create"> 新建用户</a>
                             </li>
                         </ul>
                     </li>
-
-                    <li>
-                        <a href="#"><i class="fa fa-th-list fa-ticket"></i> 投票管理<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li class="active">
-                                <a href="/vote/list"> 投票列表</a>
-                            </li>
-                            <li class="active">
-                                <a href="/vote/pub"> 发起投票</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#"><i class="fa fa-th-list fa-bars"></i> 抽奖管理<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li class="active">
-                                <a href="/award/list"> 奖品列表</a>
-                            </li>
-                            <li class="active">
-                                <a href="/award/pub"> 奖品添加</a>
-                            </li>
-                            <li class="active">
-                                <a href="/award/record"> 中奖纪录</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#"><i class="fa fa-th-list fa-edit"></i> 投票配置<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li class="active">
-                                <a href="/config/list"> 配置列表</a>
-                            </li>
-                            <li class="active">
-                                <a href="/config/pub"> 添加配置</a>
-                            </li>
-                        </ul>
-                    </li>
-
                 </ul>
             </div>
         </div>

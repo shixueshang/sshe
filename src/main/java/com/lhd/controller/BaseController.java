@@ -1,9 +1,12 @@
 package com.lhd.controller;
 
 
+import com.lhd.bean.User;
 import com.lhd.util.Constants;
 import com.lhd.util.DateEditor;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
@@ -65,6 +68,15 @@ public class BaseController {
 		}else{
             size = Constants.DEFAULT_PAGE_SIZE;
         }
+	}
+
+	/**
+	 * 获得当前用户
+	 * @return
+	 */
+	public User getCurrentUser(){
+		Subject subject = SecurityUtils.getSubject();
+		return (User)subject.getSession().getAttribute("admin");
 	}
 
 }
