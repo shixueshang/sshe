@@ -1,8 +1,15 @@
 package com.lhd.commons.shiro;
 
 
+import com.lhd.bean.Resources;
+import com.lhd.bean.Role;
 import com.lhd.bean.User;
+import com.lhd.bean.UserRole;
+import com.lhd.service.ResourcesService;
+import com.lhd.service.RoleService;
 import com.lhd.service.UserService;
+import com.lhd.util.Constants;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -10,7 +17,9 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,6 +29,12 @@ public class ShiroDbRealm extends AuthorizingRealm {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private RoleService roleService;
+
+    @Resource
+    private ResourcesService resourcesService;
 
 
     /**
@@ -47,23 +62,20 @@ public class ShiroDbRealm extends AuthorizingRealm {
 
         User shiroUser = (User) principals.getPrimaryPrincipal();
         Set<String> urlSet = new HashSet<String>();
-        //超级管理员获得所有权限
-        /*if(shiroUser.getLoginName().equals(Constants.ADMIN_USER)){
-            List<SystemModule> modules = adminModuleService.findAllModules();
-            for(SystemModule module : modules){
-                if (StringUtils.isNoneBlank(module.getUrl())) {
-                    urlSet.add(module.getUrl());
-                }
-            }
+        //获得登陆人员的权限
+        List<Resources> resourcesList = new ArrayList<Resources>();
+        if(shiroUser.getLoginName().equals(Constants.ADMIN_USER)){
+            resourcesList = resourcesService.findAllResources();
         }else{
-            List<SystemRoleModule> roleResourceList = adminModuleService.findModulesByAdminRole(shiroAdmin.getRole());
-            for (SystemRoleModule systemAdminModule : roleResourceList) {
-                SystemModule module = adminModuleService.getSystemModule(systemAdminModule.getModuleId());
-                if (StringUtils.isNoneBlank(module.getUrl())) {
-                    urlSet.add(module.getUrl());
-                }
+           List<UserRole> userRoles = roleService.findRolesByUserId(shiroUser.getId());
+            for(UserRole userRole : userRoles){
+                 resourcesList = resourcesService.findResourcesByRoleId(userRole.getRoleId());
             }
-        }*/
+        }
+
+        for(Resources resource : resourcesList){
+            urlSet.add(resource.getUrl());
+        }
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.addStringPermissions(urlSet);

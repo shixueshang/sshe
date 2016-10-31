@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `sshe`.`resources` (
   `name` VARCHAR(45) NOT NULL COMMENT '资源名称',
   `parent_id` VARCHAR(45) NULL DEFAULT NULL COMMENT '父级资源',
   `url` VARCHAR(255) NOT NULL COMMENT '地址',
+  `level` TINYINT NOT NULL COMMENT '地址级别',
   `description` VARCHAR(500) NULL DEFAULT NULL,
   `is_valid` TINYINT(1) NULL DEFAULT '1',
   PRIMARY KEY (`id`),
@@ -93,6 +94,18 @@ CREATE TABLE IF NOT EXISTS `sshe`.`user_role` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = '用户角色关联表';
+
+
+DROP TABLE IF EXISTS `sshe`.`role_resources` ;
+CREATE TABLE `sshe`.`role_resources` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `role_id` INT(11) NOT NULL,
+  `resource_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`))
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8
+  COMMENT = '角色菜单关联表';
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

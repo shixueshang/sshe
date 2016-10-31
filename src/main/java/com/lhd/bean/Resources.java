@@ -24,6 +24,9 @@ public class Resources  implements Serializable{
     @Column(name = "url")
     private String url;
 
+    @Column(name = "level")
+    private Integer level;
+
     @Column(name = "description")
     private String description;
 
@@ -60,6 +63,14 @@ public class Resources  implements Serializable{
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public String getDescription() {

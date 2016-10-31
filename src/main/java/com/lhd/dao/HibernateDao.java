@@ -41,21 +41,21 @@ public abstract interface HibernateDao
 
 	public abstract List<Map<String, Object>> findMapBySqlAndRawAliases(String paramString, Object... paramArrayOfObject);
 
-	public abstract <T> Page<T> findPage(String paramString, int paramInt1, int paramInt2, Map<String, Object> paramMap);
+	public abstract <T> Page<T> findPage(String paramString, int page, int size, Map<String, Object> paramMap);
 
-	public abstract <T> Page<T> findPage(String paramString, int paramInt1, int paramInt2, Object... paramArrayOfObject);
+	public abstract <T> Page<T> findPage(String paramString, int page, int size, Object... paramArrayOfObject);
 
-	public abstract <T> Page<T> findPageBySql(String paramString, int paramInt1, int paramInt2, Map<String, Object> paramMap);
+	public abstract <T> Page<T> findPageBySql(String paramString, int page, int size, Map<String, Object> paramMap);
 
-	public abstract <T> Page<T> findPageBySql(String paramString, int paramInt1, int paramInt2, Object... paramArrayOfObject);
+	public abstract <T> Page<T> findPageBySql(String paramString, int page, int size, Object... paramArrayOfObject);
 
-	public abstract Page<Map<String, Object>> findPageOfMapBySql(String paramString, int paramInt1, int paramInt2, Map<String, Object> paramMap);
+	public abstract Page<Map<String, Object>> findPageOfMapBySql(String paramString, int page, int size, Map<String, Object> paramMap);
 
-	public abstract Page<Map<String, Object>> findPageOfMapBySql(String paramString, int paramInt1, int paramInt2, Object... paramArrayOfObject);
+	public abstract Page<Map<String, Object>> findPageOfMapBySql(String paramString, int page, int size, Object... paramArrayOfObject);
 
-	public abstract Page<Map<String, Object>> findPageOfMapBySqlAndRawAliases(String paramString, int paramInt1, int paramInt2, Map<String, Object> paramMap);
+	public abstract Page<Map<String, Object>> findPageOfMapBySqlAndRawAliases(String paramString, int page, int size, Map<String, Object> paramMap);
 
-	public abstract Page<Map<String, Object>> findPageOfMapBySqlAndRawAliases(String paramString, int paramInt1, int paramInt2, Object... paramArrayOfObject);
+	public abstract Page<Map<String, Object>> findPageOfMapBySqlAndRawAliases(String paramString, int page, int size, Object... paramArrayOfObject);
 
 	public abstract <T> T findUnique(String paramString, Map<String, Object> paramMap);
 
