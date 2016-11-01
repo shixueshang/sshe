@@ -1,6 +1,9 @@
-package com.lhd.controller;
+package com.lhd.controller.system;
 
 import com.lhd.bean.User;
+import com.lhd.controller.BaseController;
+import com.lhd.service.ResourcesService;
+import com.lhd.service.RoleService;
 import com.lhd.service.UserService;
 import com.lhd.util.RandomCode;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -9,7 +12,6 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,12 @@ public class LoginController extends BaseController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private RoleService roleService;
+
+    @Resource
+    private ResourcesService resourcesService;
 
     /**
      * @return
@@ -82,15 +90,11 @@ public class LoginController extends BaseController {
                 subject.login(token);
             }
 
-            User user = userService.findUserByLoginName(username);
-
-            Session session = subject.getSession(true);
-            session.setAttribute("user", user);
             mav.setViewName("system/home");
             return mav;
         } catch (UnknownAccountException e) {
             mav.setViewName("index");
-            mav.addObject("error", "账号不存在");
+            mav.addObject("error", "账号不存在或已失效");
             return mav;
         } catch (IncorrectCredentialsException e) {
             mav.setViewName("index");

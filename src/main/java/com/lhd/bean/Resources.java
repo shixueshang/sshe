@@ -69,10 +69,6 @@ public class Resources  implements Serializable{
         return level;
     }
 
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
     public String getDescription() {
         return description;
     }

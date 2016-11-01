@@ -76,7 +76,7 @@ public class BaseController {
 	 */
 	public User getCurrentUser(){
 		Subject subject = SecurityUtils.getSubject();
-		return (User)subject.getSession().getAttribute("admin");
+		return (User)subject.getPrincipal();
 	}
 
 }

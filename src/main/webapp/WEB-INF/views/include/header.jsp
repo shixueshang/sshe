@@ -33,4 +33,3 @@
 	<script src="<%=contextPath%>/static/js/metisMenu/dist/metisMenu.min.js"></script>
     <script src="<%=contextPath%>/static/js/smart/sb-admin-2.js"></script>
 </head>
-<body class="container-fluid">

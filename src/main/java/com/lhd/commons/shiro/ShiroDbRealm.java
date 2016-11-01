@@ -38,15 +38,19 @@ public class ShiroDbRealm extends AuthorizingRealm {
 
 
     /**
-     * Shiro登录认证(原理：用户提交 用户名和密码  --- shiro 封装令牌 ---- realm 通过用户名将密码查询返回 ---- shiro 自动去比较查询出密码和用户输入密码是否一致---- 进行登陆控制 )
+     * 获取身份验证相关信息
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-        // 账号不存在
+
         User user  = userService.findUserByLoginName(token.getUsername());
         if(user == null){
-            return null;
+            throw new UnknownAccountException();// 账号不存在
+        }
+
+        if(!user.isValid()){
+            throw new UnknownAccountException(); //帐号已失效
         }
 
         // 认证缓存信息
@@ -55,7 +59,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
     }
 
     /**
-     * Shiro权限认证
+     * 获取授权信息
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -63,13 +67,14 @@ public class ShiroDbRealm extends AuthorizingRealm {
         User shiroUser = (User) principals.getPrimaryPrincipal();
         Set<String> urlSet = new HashSet<String>();
         //获得登陆人员的权限
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         List<Resources> resourcesList = new ArrayList<Resources>();
         if(shiroUser.getLoginName().equals(Constants.ADMIN_USER)){
             resourcesList = resourcesService.findAllResources();
         }else{
-           List<UserRole> userRoles = roleService.findRolesByUserId(shiroUser.getId());
+            List<UserRole> userRoles = roleService.findRolesByUserId(shiroUser.getId());
             for(UserRole userRole : userRoles){
-                 resourcesList = resourcesService.findResourcesByRoleId(userRole.getRoleId());
+                resourcesList = resourcesService.findResourcesByRoleId(userRole.getRoleId());
             }
         }
 
@@ -77,7 +82,6 @@ public class ShiroDbRealm extends AuthorizingRealm {
             urlSet.add(resource.getUrl());
         }
 
-        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.addStringPermissions(urlSet);
         return info;
     }

@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `sshe`.`resources` (
   `name` VARCHAR(45) NOT NULL COMMENT '资源名称',
   `parent_id` VARCHAR(45) NULL DEFAULT NULL COMMENT '父级资源',
   `url` VARCHAR(255) NOT NULL COMMENT '地址',
-  `level` TINYINT NOT NULL COMMENT '地址级别',
+  `level` TINYINT NOT NULL COMMENT '地址级别(1、菜单2、控制器)',
   `description` VARCHAR(500) NULL DEFAULT NULL,
   `is_valid` TINYINT(1) NULL DEFAULT '1',
   PRIMARY KEY (`id`),

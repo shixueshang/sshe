@@ -71,4 +71,19 @@ public class Constants {
 
     }
 
+    /**
+     * 資源类型
+     */
+    public static class RESOURCES_LEVEL{
+        /**
+         * 菜单
+         */
+        public static Integer RESOURCES_MENU = 1;
+
+        /**
+         * 控制器
+         */
+        public static Integer RESOURCES_COMMON = 2;
+    }
+
 }
