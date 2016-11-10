@@ -1,132 +1,166 @@
 package com.lhd.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+/**
+ * 基于JDK8的时间工具类
+ * Created by lihongde on 2016/11/10 14:15.
+ */
 public class DateUtil {
 
-	private static String defaultDatePattern = "yyyy-MM-dd HH:mm:ss";
-	public static final long Milliseconds_HOUR = (long) (1000 * 3600);
-	public static final long Milliseconds_DAY = (long) (Milliseconds_HOUR * 24);
-
-	/**
-	 * 四位年份
-	 * 
-	 * @return
-	 */
-	public static int getYear() {
-		Calendar c = Calendar.getInstance();
-		return c.get(Calendar.YEAR);
-	}
-
-	/**
-	 * 根据日期得到四位年份
-	 * 
-	 * @param date
-	 * @return
-	 */
-	public static int getYear(Date date) {
-		Calendar c = Calendar.getInstance();
-		c.setTime(date);
-		return c.get(Calendar.YEAR);
-	}
-
-	/**
-	 * 月份(1~12)
-	 * 
-	 * @return
-	 */
-	public static int getMonth() {
-		Calendar c = Calendar.getInstance();
-		return c.get(Calendar.MONTH) + 1;
-	}
-
-
-	/**
-	 * 日期转换为字符串
-	 * 
-	 * @param date
-	 * @param pattern
-	 */
-	public static String formatDate(Date date, String pattern) {
-		if (date == null) {
-			return "";
-		}
-		SimpleDateFormat format = new SimpleDateFormat(pattern);
-		return format.format(date);
-	}
-
-	public static String format(Date datetime) {
-		return formatDate(datetime, defaultDatePattern);
-	}
-
-	public static final Date parseDate(String strDate, String datePattern) {
-		SimpleDateFormat df = null;
-		Date date = null;
-		df = new SimpleDateFormat(datePattern);
-		try {
-			date = df.parse(strDate);
-		} catch (ParseException pe) {
-		}
-		return date;
-	}
+    /**
+     * 获取默认时间格式: yyyy-MM-dd HH:mm:ss
+     */
+    private static final DateTimeFormatter DEFAULT_DATETIME_FORMATTER = DateTimeFormat.LONG_DATE_PATTERN_LINE.formatter;
 
     /**
-     * 获得指定日期的起始时间
-     * @param date
+     * String 转时间
+     *
+     * @param timeStr
      * @return
      */
-    public static Date getStartTimeOfDate(Date date){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        return calendar.getTime();
+    public static LocalDateTime parseTime(String timeStr) {
+        return LocalDateTime.parse(timeStr, DEFAULT_DATETIME_FORMATTER);
     }
 
     /**
-     * 获得指定日期的结束日期
-     * @param date
+     * String 转时间
+     *
+     * @param dateStr
      * @return
      */
-    public static Date getEndTimeOfDate(Date date){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.set(Calendar.HOUR_OF_DAY, 23);
-        calendar.set(Calendar.MINUTE, 59);
-        calendar.set(Calendar.SECOND, 59);
-        calendar.set(Calendar.MILLISECOND, 999);
-        return calendar.getTime();
+    public static LocalDate parseDate(String dateStr) {
+        return LocalDate.parse(dateStr);
     }
 
     /**
-     * 得到日期后几天日期
-     * @param date
-     * @param num
+     * String 转时间
+     *
+     * @param timeStr
+     * @param format  时间格式
      * @return
      */
-    public static Date getDateNextDays(Date date, int num) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.DAY_OF_MONTH, num);
-        return cal.getTime();
+    public static LocalDateTime parseTime(String timeStr, DateTimeFormat format) {
+        return LocalDateTime.parse(timeStr, format.formatter);
     }
 
     /**
-     * 得到日期前几天日期
-     * @param date
-     * @param day
+     * String 转时间
+     *
+     * @param dateStr
+     * @param format  时间格式
      * @return
      */
-    public static Date getDateBefore(Date date, int day){
-        Calendar now =Calendar.getInstance();
-        now.setTime(date);
-        now.set(Calendar.DATE,now.get(Calendar.DATE)-day);
-        return now.getTime();
+    public static LocalDate parseDate(String dateStr, DateTimeFormat format) {
+        return LocalDate.parse(dateStr, format.formatter);
     }
 
+
+
+    /**
+     * 时间转 String
+     *
+     * @param time
+     * @return
+     */
+    public static String parseTime(LocalDateTime time) {
+        return DEFAULT_DATETIME_FORMATTER.format(time);
+    }
+
+    /**
+     * 时间转 String
+     *
+     * @param time
+     * @param format 时间格式
+     * @return
+     */
+    public static String parseTime(LocalDateTime time, DateTimeFormat format) {
+        return format.formatter.format(time);
+    }
+
+    /**
+     * 获取当前时间
+     *
+     * @return
+     */
+    public static String getCurrentDatetime() {
+        return DEFAULT_DATETIME_FORMATTER.format(LocalDateTime.now());
+    }
+
+    /**
+     * 获取当前时间
+     *
+     * @param format 时间格式
+     * @return
+     */
+    public static String getCurrentDatetime(DateTimeFormat format) {
+        return format.formatter.format(LocalDateTime.now());
+    }
+
+    /**
+     * 年份
+     * @return
+     */
+    public static int getYear(){
+        LocalDate now = LocalDate.now();
+        return now.getYear();
+    }
+
+    /**
+     * 获得年份
+     * @param date
+     * @return
+     */
+    public static int getYear(LocalDate date){
+        return date.getYear();
+    }
+
+    /**
+     * 月份
+     * @return
+     */
+    public static int getMonth(){
+        LocalDate now = LocalDate.now();
+        return now.getMonthValue();
+    }
+
+
+
+    /**
+     * 时间格式
+     */
+    public enum DateTimeFormat {
+
+        /**
+         * 短时间格式
+         */
+        SHORT_DATE_PATTERN_LINE("yyyy-MM-dd"),
+        SHORT_DATE_PATTERN_SLASH("yyyy/MM/dd"),
+        SHORT_DATE_PATTERN_DOUBLE_SLASH("yyyy\\MM\\dd"),
+        SHORT_DATE_PATTERN_NONE("yyyyMMdd"),
+
+        /**
+         * 长时间格式
+         */
+        LONG_DATE_PATTERN_LINE("yyyy-MM-dd HH:mm:ss"),
+        LONG_DATE_PATTERN_SLASH("yyyy/MM/dd HH:mm:ss"),
+        LONG_DATE_PATTERN_DOUBLE_SLASH("yyyy\\MM\\dd HH:mm:ss"),
+        LONG_DATE_PATTERN_NONE("yyyyMMdd HH:mm:ss"),
+
+        /**
+         * 长时间格式 带毫秒
+         */
+        LONG_DATE_PATTERN_WITH_MILSEC_LINE("yyyy-MM-dd HH:mm:ss.SSS"),
+        LONG_DATE_PATTERN_WITH_MILSEC_SLASH("yyyy/MM/dd HH:mm:ss.SSS"),
+        LONG_DATE_PATTERN_WITH_MILSEC_DOUBLE_SLASH("yyyy\\MM\\dd HH:mm:ss.SSS"),
+        LONG_DATE_PATTERN_WITH_MILSEC_NONE("yyyyMMdd HH:mm:ss.SSS");
+
+        private transient DateTimeFormatter formatter;
+
+        DateTimeFormat(String pattern) {
+            formatter = DateTimeFormatter.ofPattern(pattern);
+        }
+    }
 }
