@@ -10,6 +10,7 @@
 	<context:component-scan base-package="com.lhd.controller" />
 
 	<mvc:resources mapping="/static/**" location="/static/" />
+	<mvc:resources mapping="/assets/**" location="/assets/" />
 
 	<!-- 配置结果页面 前缀和后缀 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

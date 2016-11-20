@@ -1,1 +1,1 @@
-springmvc+spring+hibernate+bootstrap实现简单的增删改查功能
+springmvc+spring+hibernate+bootstrap+metrnic4.7实现简单的增删改查功能

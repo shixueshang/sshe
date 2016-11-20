@@ -4,32 +4,42 @@
 	String contextPath = request.getContextPath();
 %>
 
-<html>
+<!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
 	<title>sshe</title>
     <link href="<%=request.getContextPath()%>/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" media="screen"/>
     <link href="<%=request.getContextPath()%>/static/images/favicon.ico" rel="bookmark" type="image/x-icon" media="screen"/>
 
-    <!-- css -->
-	<link rel="stylesheet" href="<%=contextPath%>/static/css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=contextPath%>/static/css/bootstrap/bootstrap-fileupload.css">
-    <link rel="stylesheet" href="<%=contextPath%>/static/css/smart/timeline.css" rel="stylesheet">
-    <link rel="stylesheet" href="<%=contextPath%>/static/css/smart/sb-admin-2.css" rel="stylesheet">
-	<link rel="stylesheet" href="<%=contextPath%>/static/css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=contextPath%>/static/css/jqueryui/jquery-ui-1.9.2.custom.css" />
-	<link rel="stylesheet" href="<%=contextPath%>/static/js/metisMenu/dist/metisMenu.min.css" >
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+	<link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/simple-line-icons/simple-line-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/bootstrap-switch/css/bootstrap-switch.min.css" >
 
-	<!-- js-core -->
-	<script src="<%=contextPath%>/static/js/jquery/jquery-2.1.1.min.js"></script>
-    <script src="<%=contextPath%>/static/js/jqueryui/jquery-ui-1.9.2.custom.min.js"></script>
-    <script src="<%=contextPath%>/static/js/jquery/jquery.form.js"></script>
-	<script src="<%=contextPath%>/static/js/bootstrap/bootstrap.min.js"></script>
-    <script src="<%=contextPath%>/static/js/bootstrap/bootstrap-fileupload.js"></script>
-    <script src="<%=contextPath%>/static/js/bootstrap/bootstrap-dialog.js"></script>
-    <script src="<%=contextPath%>/static/js/jquery/jquery.validate.min.js"></script>
-    <script src="<%=contextPath%>/static/js/jquery/jquery.validate.messages_zh.js"></script>
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/css/components.min.css" />
+    <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/css/plugins.min.css"  />
 
-	<script src="<%=contextPath%>/static/js/metisMenu/dist/metisMenu.min.js"></script>
-    <script src="<%=contextPath%>/static/js/smart/sb-admin-2.js"></script>
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/layouts/layout/css/layout.min.css"  />
+    <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/layouts/layout/css/themes/default.min.css" />
+    <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/layouts/layout/css/custom.min.css" />
+
+	<!-- JS-CORE -->
+	<script type="text/javascript" src="<%=contextPath%>/assets/global/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/js/js.cookie.min.js"></script>
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/jquery/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/scripts/app.min.js"></script>
+
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/layouts/layout/scripts/layout.min.js"></script>
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/layouts/layout/scripts/demo.min.js"></script>
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/layouts/scripts/quick-sidebar.min.js" ></script>
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/layouts/scripts/quick-nav.min.js"></script>
 </head>
