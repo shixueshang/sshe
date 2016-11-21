@@ -2,8 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<jsp:include page="include/header.jsp"/>
-
+<link href="<%=request.getContextPath()%>/assets/global/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/assets/global/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/assets/global/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/assets/global/css/components.min.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css"/>
 <link href="<%=request.getContextPath()%>/assets/pages/css/login.min.css" rel="stylesheet" type="text/css"/>
 
 <body class="login">
@@ -18,19 +21,21 @@
             <span>请填写用户名和密码</span>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Username</label>
+            <label class="control-label visible-ie8 visible-ie9">用户名</label>
             <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"
                    placeholder="请输入用户名" name="username"/>
         </div>
 
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Password</label>
+            <label class="control-label visible-ie8 visible-ie9">密码</label>
             <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off"
-                   placeholder="请输入密码" name="password"/>
+                    placeholder="请输入密码" name="password"/>
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="请输入验证码" name="code"/>
+            <label class="control-label visible-ie8 visible-ie9">验证码</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"
+                   placeholder="请输入验证码" name="code"/>
         </div>
 
         <div class="form-group">
@@ -60,8 +65,15 @@
 </div>
 <div class="copyright"> 2016 © Metronic. Admin Dashboard Template.</div>
 
+<script src="<%=request.getContextPath()%>/assets/global/jquery/jquery.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/assets/global/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/assets/global/js/js.cookie.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/assets/global/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/assets/global/jquery/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/assets/global/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/global/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/global/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/assets/global/scripts/app.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/pages/scripts/login.min.js" type="text/javascript"></script>
 <script>
     jQuery(document).ready(function () {

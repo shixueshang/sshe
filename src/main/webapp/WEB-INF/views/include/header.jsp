@@ -5,6 +5,7 @@
 %>
 
 <!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title>sshe</title>
@@ -16,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/simple-line-icons/simple-line-icons.min.css">
     <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/bootstrap-switch/css/bootstrap-switch.min.css" >
+    <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/bootstrap-select/css/bootstrap-select.min.css" >
 
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link rel="stylesheet" type="text/css" href="<%=contextPath%>/assets/global/css/components.min.css" />
@@ -44,4 +46,4 @@
     <script type="text/javascript" src="<%=contextPath%>/assets/global/layouts/scripts/quick-nav.min.js"></script>
 </head>
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
