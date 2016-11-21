@@ -2,6 +2,10 @@
 -- Query: SELECT * FROM sshe.resources
 -- Date: 2016-10-31 17:15
 */
+
+INSERT INTO `sshe`.`user` (`id`, `login_name`, `display_name`, `password`, `is_valid`) VALUES ('1', 'admin', '管理员', '21232f297a57a5a743894a0e4a801fc3', '1');
+
+
 TRUNCATE TABLE `resources`;
 INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (1,'顶级节点',NULL,'/',2,NULL,1);
 INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (2,'系统管理','1','/admin/user',1,'系统管理菜单',1);

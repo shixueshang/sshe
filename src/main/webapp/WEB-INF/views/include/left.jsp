@@ -3,75 +3,32 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
-<style >
-    .dropdown-toggle:hover{
-        background-color: rgb(67,142,185) !important;
-    }
-    .dropdown-toggle{
-        background-color: rgb(67,142,185) !important;
-    }
-    #side-menu a:hover{
-        color: rgb(67,142,185);
-    }
-    #side-menu a{
-        color: black;
-    }
-</style>
+<div class="page-sidebar-wrapper page-sidebar nav-collapse collapse">
+    <ul class="page-slide-menu page-header-fixed" style="padding-top: 20px">
 
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;background-color: rgb(67,142,185)">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"></a>
-        </div>
+        <shiro:hasPermission name="/admin"><li class="nav-item menu_parent">
+            <a href="javascript:;"><i class="icon-reorder"></i><span class="title"> 系统管理</span></a>
+            <ul class="sub">
+                <shiro:hasPermission name="/admin/user/list"><li class="active">
+                    <a class="menu_child" href="<%=request.getContextPath()%>/admin/user/list">用户列表</a>
+                </li></shiro:hasPermission>
+                <shiro:hasPermission name="/business/product/pub"><li>
+                    <a class="menu_child" href="<%=request.getContextPath()%>/admin/user/create">新增用户</a>
+                </li></shiro:hasPermission>
+            </ul>
+        </li></shiro:hasPermission>
 
-        <ul class="nav navbar-top-links navbar-right">
+        <shiro:hasPermission name="/system"><li class="nav-item menu_parent">
+            <a href="javascript:;"><i class="icon-wrench"></i><span class="title"></span> 系统工具</a>
+            <ul class="sub">
+                <shiro:hasPermission name="/system/monitoring"><li >
+                    <a class="menu_child" href="<%=request.getContextPath()%>/system/monitoring"> 性能监控</a>
+                </li></shiro:hasPermission>
+            </ul>
+        </li></shiro:hasPermission>
+    </ul>
 
-            <li class="dropdown ">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="height: 42px;">
-                    <img alt=""  src="<%=request.getContextPath()%>/static/images/user.jpg" style="margin-top: -8px"/>
-                    <span style=" color: white"><shiro:principal property="displayName"></shiro:principal></span>
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="<%=request.getContextPath()%>/logout"><i class="fa fa-power-off fa-fw"></i> 退出</a>
-                    </li>
-                    <li><a href="<%=request.getContextPath()%>/password/modify"><i class="fa fa-key fa-fw"></i> 修改密码</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-
-                    <shiro:hasPermission name="/admin"><li class="menu_parent">
-                        <a  href="#"><i class="fa fa-th-list fa-wrench"></i> 系统管理<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <shiro:hasPermission name="/admin/user/list"><li >
-                                <a class="menu_child" href="<%=request.getContextPath()%>/admin/user/list"> 用户列表</a>
-                            </li></shiro:hasPermission>
-                            <shiro:hasPermission name="/admin"><li >
-                                <a class="menu_child" href="<%=request.getContextPath()%>/admin/user/create"> 用户添加</a>
-                            </li></shiro:hasPermission>
-                        </ul>
-                    </li></shiro:hasPermission>
-
-                    <shiro:hasPermission name="/system"><li class="menu_parent">
-                        <a href="#"><i class="fa fa-th-list fa-fw"></i> 系统工具<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <shiro:hasPermission name="/system/monitoring"><li >
-                                <a href="<%=request.getContextPath()%>/system/monitoring"> 性能监控</a>
-                            </li></shiro:hasPermission>
-                        </ul>
-                    </li></shiro:hasPermission>
-                </ul>
-            </div>
-        </div>
-    </nav>
+</div>
 
 <script>
     $(function(){

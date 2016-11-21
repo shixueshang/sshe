@@ -21,7 +21,7 @@ public class DictionaryServiceImpl implements DictionaryService {
     private HibernateDao dao;
 
 
-    private Map<DictType, List<Dictionary>> dictCache = new ConcurrentHashMap<>();
+    private Map<DictType, List<Dictionary>> dictCache = new ConcurrentHashMap<DictType, List<Dictionary>>();
 
     @Override
     public List<Dictionary> findDictByType(DictType dictType) {
