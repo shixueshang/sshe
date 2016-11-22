@@ -23,19 +23,19 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">用户名</label>
             <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"
-                   placeholder="请输入用户名" name="username"/>
+                   placeholder="用户名" name="username"/>
         </div>
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">密码</label>
             <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off"
-                    placeholder="请输入密码" name="password"/>
+                    placeholder="密码" name="password"/>
         </div>
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">验证码</label>
             <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"
-                   placeholder="请输入验证码" name="code"/>
+                   placeholder="验证码" name="code"/>
         </div>
 
         <div class="form-group">

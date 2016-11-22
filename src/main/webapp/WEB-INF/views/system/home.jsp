@@ -6,7 +6,7 @@
     <div class="page-container">
             <jsp:include page="../include/left.jsp"/>
             <div class="page-content-wrapper">
-                <div class="page-content" style="min-height: 1112px;">
+                <div class="page-content" >
                     <h1 class="page-title">
                         welcome to my home!
                         <small></small>
