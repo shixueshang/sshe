@@ -1,10 +1,6 @@
 package com.lhd.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -26,6 +22,9 @@ public class User implements java.io.Serializable {
 
     @Column(name = "is_valid")
     private boolean isValid = true;
+
+    @Transient
+    private Integer roleId;
 
     public Integer getId() {
         return id;
@@ -65,5 +64,13 @@ public class User implements java.io.Serializable {
 
     public void setValid(boolean valid) {
         isValid = valid;
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 }

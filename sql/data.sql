@@ -14,3 +14,6 @@ INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is
 INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (5,'用户保存','2','/admin/user/save',2,'保存用户',1);
 INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (6,'系统工具','1','/system',1, '系统工具',1);
 INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (7,'性能监控','6','/system/monitoring',1, 'druid性能监控', 1);
+INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (8,'角色列表','2','/admin/role/list',1, '角色列表菜单', 1);
+INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (9,'创建角色','2','/admin/role/create',1, '创建角色菜单', 1);
+INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (10,'角色保存','2','/admin/role/save',1, '保存角色', 1);

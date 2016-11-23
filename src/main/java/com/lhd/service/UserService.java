@@ -8,7 +8,7 @@ public interface UserService {
 
 	Page<User> findPageUsers(int page, int size);
 
-	void insert(User user);
+	void saveOrUpdate(User user);
 	
 	void delete(Integer userId);
 

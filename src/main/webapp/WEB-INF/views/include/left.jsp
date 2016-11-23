@@ -16,6 +16,12 @@
                     <shiro:hasPermission name="/admin/user/create"><li>
                         <a class="nav-link" href="<%=request.getContextPath()%>/admin/user/create"><span class="title">新增用户</span></a>
                     </li></shiro:hasPermission>
+                    <shiro:hasPermission name="/admin/role/list"><li class="nav-item">
+                        <a class="nav-link" href="<%=request.getContextPath()%>/admin/role/list"><span class="title">角色列表</span></a>
+                    </li></shiro:hasPermission>
+                    <shiro:hasPermission name="/admin/role/create"><li>
+                        <a class="nav-link" href="<%=request.getContextPath()%>/admin/role/create"><span class="title">新增角色</span></a>
+                    </li></shiro:hasPermission>
                 </ul>
             </li></shiro:hasPermission>
 

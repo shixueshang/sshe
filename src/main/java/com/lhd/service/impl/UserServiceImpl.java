@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void insert(User user) {
+	public void saveOrUpdate(User user) {
 		dao.save(user);
 	}
 

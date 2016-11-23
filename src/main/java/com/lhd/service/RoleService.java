@@ -13,9 +13,11 @@ public interface RoleService {
 
     Page<Role> findPageRoles(int page, int size);
 
-    void addRole(Role role);
+    void saveOrUpdate(Role role);
 
     Role getRole(Integer roleId);
 
     List<UserRole> findRolesByUserId(Integer userId);
+
+    List<Role> findAllRoles();
 }

@@ -31,6 +31,7 @@
 	<!-- JS-CORE -->
 	<script type="text/javascript" src="<%=contextPath%>/assets/global/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="<%=contextPath%>/assets/global/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<%=contextPath%>/assets/global/bootstrap/js/bootstrap-dialog.js"></script>
     <script type="text/javascript" src="<%=contextPath%>/assets/global/js/js.cookie.min.js"></script>
     <script type="text/javascript" src="<%=contextPath%>/assets/global/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="<%=contextPath%>/assets/global/jquery/jquery.blockui.min.js"></script>

@@ -12,7 +12,7 @@
         <div class="page-content">
             <ul class="page-breadcrumb breadcrumb">
                 <li><span class="font-dark">系统管理</span><i class="fa fa-angle-right font-dark"></i></li>
-                <li><span class="font-dark">新增用户</span></li>
+                <li><span class="font-dark">新增角色</span></li>
             </ul>
             <div class="row">
                 <div class="col-md-12">
@@ -21,7 +21,7 @@
                             <h4><i class="fa fa-comments"></i></h4>
                         </div>
                         <div class="portlet-body form">
-                            <form class="form-horizontal" role="form" id="user_form" action="<%=request.getContextPath()%>/admin/user/save" method="POST" >
+                            <form class="form-horizontal" role="form" id="user_form" action="<%=request.getContextPath()%>/admin/role/save" method="POST" >
                                 <div class="form-body">
                                     <div class="alert alert-danger display-hide">
                                         <button class="close" data-close="alert"></button>
@@ -32,36 +32,33 @@
                                         表单内容验证成功!
                                     </div>
                                     <div class="form-group">
-                                        <label  class="col-md-3 control-label">登录名<span class="required" aria-required="true">*</span></label>
+                                        <label  class="col-md-3 control-label">角色代码<span class="required" aria-required="true">*</span></label>
                                         <div class="col-md-3">
-                                            <input type="text" name="loginName" data-required="1" maxlength="40"  class="form-control" value="${user.loginName}" >
+                                            <input type="text" name="roleCode" data-required="1" maxlength="40"  class="form-control" value="${role.roleCode}" >
                                             <span class="help-inline"></span>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label  class="col-md-3 control-label">用户名</label>
+                                        <label  class="col-md-3 control-label">角色名称</label>
                                         <div class="col-md-3">
-                                            <input type="text" name="displayName" maxlength="40"  class="form-control" value="${user.displayName}" >
-                                            <span class="help-inline"></span>
+                                            <input type="text" name="roleName" maxlength="40"  class="form-control" value="${role.roleName}" >
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label  class="col-md-3 control-label">所属角色</label>
+                                        <label  class="col-md-3 control-label">描述</label>
                                         <div class="col-md-3">
-                                            <select name="roleId" id="user_role" class="form-control">
-                                                <option value="">--请选择所属角色--</option>
-                                            </select>
-                                            <span class="help-inline"></span>
+                                            <textarea name="description" maxlength="200"  class="form-control">${role.description}</textarea>
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <input type="hidden" name="id" value="${user.id}">
+                                            <input type="hidden" name="id" value="${role.id}">
                                             <button type="submit" class="btn green">确定</button>
                                         </div>
                                     </div>
@@ -77,15 +74,6 @@
 
 <script>
     $(function(){
-
-        var roles = '${roles}';
-        if(roles != ''){
-            roles = $.parseJSON(roles);
-        }
-        $.each(roles, function(i, val){
-            $("#user_role").append("<option value='"+val.id+"'>"+val.roleName+"</option>")
-        })
-
         var user_form = $('#user_form');
         var error = $('.alert-danger', user_form);
         var success = $('.alert-success', user_form);
@@ -103,9 +91,6 @@
                     required : true
                 },
                 displayName : {
-                    required : true
-                },
-                roleId : {
                     required : true
                 }
             },

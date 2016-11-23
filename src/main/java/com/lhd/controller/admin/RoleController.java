@@ -1,52 +1,46 @@
 package com.lhd.controller.admin;
 
-import com.alibaba.fastjson.JSON;
+import com.lhd.bean.Role;
 import com.lhd.bean.User;
 import com.lhd.commons.page.Page;
 import com.lhd.commons.page.PageHelper;
 import com.lhd.controller.BaseController;
 import com.lhd.service.RoleService;
-import com.lhd.service.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 
+/**
+ * Created by lihongde on 2016/11/23 19:14
+ */
 @Controller
-@RequestMapping(value = "/admin/user")
-public class UserController extends BaseController{
-
-    @Resource
-    private UserService userService;
+@RequestMapping(value = "/admin/role")
+public class RoleController extends BaseController {
 
     @Resource
     private RoleService roleService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list(){
-        ModelAndView mav = new ModelAndView("admin/user/list");
-        Page<User> pages = userService.findPageUsers(page, size);
+        ModelAndView mav = new ModelAndView("admin/role/list");
+        Page<Role> pages = roleService.findPageRoles(page, size);
         mav.addObject("page", PageHelper.getPageModel(request, pages));
-        mav.addObject("users", pages.getItems());
+        mav.addObject("roles", pages.getItems());
         return mav;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String createUser(Model model){
-        model.addAttribute("roles", JSON.toJSON(roleService.findAllRoles()));
-        return "admin/user/add";
+    public String createRole(){
+        return "admin/role/add";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveUser(User user){
-        user.setPassword(DigestUtils.md5Hex(user.getLoginName()));
-        userService.saveOrUpdate(user);
-
+    public String saveRole(Role role){
+        roleService.saveOrUpdate(role);
         return "redirect:/admin/user/list";
     }
 }
-

@@ -25,7 +25,7 @@ public class Role implements Serializable{
     private String description;
 
     @Column(name = "is_valid")
-    private boolean isValid;
+    private boolean isValid = true;
 
     public Integer getId() {
         return id;

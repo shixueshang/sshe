@@ -27,7 +27,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void addRole(Role role) {
+    public void saveOrUpdate(Role role) {
         dao.save(role);
     }
 
@@ -39,5 +39,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<UserRole> findRolesByUserId(Integer userId) {
         return dao.find("from UserRole where userId = ?", userId);
+    }
+
+    @Override
+    public List<Role> findAllRoles() {
+        return dao.find("from Role where isValid = true");
     }
 }
