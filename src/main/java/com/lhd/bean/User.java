@@ -25,7 +25,7 @@ public class User implements java.io.Serializable {
     private String password;
 
     @Column(name = "is_valid")
-    private boolean isValid;
+    private boolean isValid = true;
 
     public Integer getId() {
         return id;

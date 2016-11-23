@@ -16,10 +16,6 @@
 <div class="content">
     <form class="login-form" action="<%=request.getContextPath()%>/login" method="post">
         <h3 class="form-title font-green">请登录</h3>
-        <div class="alert alert-danger display-hide">
-            <button class="close" data-close="alert"></button>
-            <span>请填写用户名和密码</span>
-        </div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">用户名</label>
             <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"
@@ -71,8 +67,6 @@
 <script src="<%=request.getContextPath()%>/assets/global/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/global/jquery/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/global/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/assets/global/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/assets/global/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/global/scripts/app.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/pages/scripts/login.min.js" type="text/javascript"></script>
 <script>

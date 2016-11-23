@@ -35,6 +35,8 @@
     <script type="text/javascript" src="<%=contextPath%>/assets/global/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="<%=contextPath%>/assets/global/jquery/jquery.blockui.min.js"></script>
     <script type="text/javascript" src="<%=contextPath%>/assets/global/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/assets/global/jquery-validation/js/jquery.validate.min.js" ></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/assets/global/jquery-validation/js/additional-methods.min.js" ></script>
 
     <!-- BEGIN THEME GLOBAL SCRIPTS -->
     <script type="text/javascript" src="<%=contextPath%>/assets/global/scripts/app.min.js"></script>

@@ -12,7 +12,7 @@
     <div class="page-content-wrapper">
         <div class="page-content">
             <ul class="page-breadcrumb breadcrumb">
-                <li><a href="javascript:;">系统管理</a><i class="fa fa-circle"></i></li>
+                <li><a href="javascript:;">系统管理</a><i class="fa fa-angle-right"></i></li>
                 <li><span class="active">用户列表</span></li>
             </ul>
             <div class="row">
@@ -47,8 +47,8 @@
                                             </c:choose>
                                         </td>
                                         <td>
-                                            <a href="<%=request.getContextPath()%>/user/detail/${user.id}" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>编辑</a>
-                                            <a href="<%=request.getContextPath()%>/user/delete/${user.id}" class="btn btn-success"><span class="glyphicon glyphicon-trash"></span>删除</a>
+                                            <a href="<%=request.getContextPath()%>/user/detail/${user.id}" class="btn green"><span class="glyphicon glyphicon-edit"></span>编辑</a>
+                                            <a href="<%=request.getContextPath()%>/user/delete/${user.id}" class="btn green"><span class="glyphicon glyphicon-trash"></span>删除</a>
 
                                         </td>
                                     </tr>
