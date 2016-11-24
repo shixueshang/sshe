@@ -6,6 +6,8 @@
 <jsp:include page="../../include/header.jsp"/>
 <jsp:include page="../../include/top.jsp"/>
 
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/global/bootstrap-multiselect/css/bootstrap-multiselect.css" />
+
 <div class="page-container">
     <jsp:include page="../../include/left.jsp"/>
     <div class="page-content-wrapper">
@@ -15,13 +17,13 @@
                 <li><span class="font-dark">新增用户</span></li>
             </ul>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="portlet box green">
                         <div class="portlet-title">
                             <h4><i class="fa fa-comments"></i></h4>
                         </div>
                         <div class="portlet-body form">
-                            <form class="form-horizontal" role="form" id="user_form" action="<%=request.getContextPath()%>/admin/user/save" method="POST" >
+                            <form role="form" id="user_form" action="<%=request.getContextPath()%>/admin/user/save" method="POST" >
                                 <div class="form-body">
                                     <div class="alert alert-danger display-hide">
                                         <button class="close" data-close="alert"></button>
@@ -32,30 +34,33 @@
                                         表单内容验证成功!
                                     </div>
                                     <div class="form-group">
-                                        <label  class="col-md-3 control-label">登录名<span class="required" aria-required="true">*</span></label>
-                                        <div class="col-md-3">
+                                        <label  class="control-label">登录名<span class="required" aria-required="true">*</span></label>
+
                                             <input type="text" name="loginName" data-required="1" maxlength="40"  class="form-control" value="${user.loginName}" >
                                             <span class="help-inline"></span>
-                                        </div>
+
                                     </div>
 
                                     <div class="form-group">
-                                        <label  class="col-md-3 control-label">用户名</label>
-                                        <div class="col-md-3">
+                                        <label  class="control-label">用户名</label>
+
                                             <input type="text" name="displayName" maxlength="40"  class="form-control" value="${user.displayName}" >
                                             <span class="help-inline"></span>
-                                        </div>
+
                                     </div>
 
                                     <div class="form-group">
-                                        <label  class="col-md-3 control-label">所属角色</label>
-                                        <div class="col-md-3">
-                                            <select name="roleId" id="user_role" class="form-control">
-                                                <option value="">--请选择所属角色--</option>
+                                        <label  class="control-label">所属角色</label>
+
+                                            <select  name="roleId" class="mt-multiselect btn btn-default" multiple="multiple" data-label="left" data-width="100%" data-filter="true" data-action-onchange="true">
+                                                <c:forEach items="${roles}" var="role">
+                                                    <option value="${role.id}">${role.roleName}</option>
+                                                </c:forEach>
                                             </select>
                                             <span class="help-inline"></span>
-                                        </div>
+
                                     </div>
+
                                 </div>
 
                                 <div class="form-actions">
@@ -75,16 +80,14 @@
     </div>
 </div>
 
+<script type="text/javascript" src="<%=request.getContextPath()%>/assets/global/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/assets/pages/scripts/components-bootstrap-multiselect.min.js"></script>
 <script>
     $(function(){
 
-        var roles = '${roles}';
-        if(roles != ''){
-            roles = $.parseJSON(roles);
-        }
-        $.each(roles, function(i, val){
-            $("#user_role").append("<option value='"+val.id+"'>"+val.roleName+"</option>")
-        })
+        $(".checkbox").click(function(){
+            console.info($(this))
+        });
 
         var user_form = $('#user_form');
         var error = $('.alert-danger', user_form);
@@ -133,3 +136,4 @@
     });
 </script>
 <jsp:include page="../../include/footer.jsp"/>
+

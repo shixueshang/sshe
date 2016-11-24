@@ -17,3 +17,9 @@ INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is
 INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (8,'角色列表','2','/admin/role/list',1, '角色列表菜单', 1);
 INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (9,'创建角色','2','/admin/role/create',1, '创建角色菜单', 1);
 INSERT INTO `resources` (`id`,`name`,`parent_id`,`url`,`level`,`description`,`is_valid`) VALUES (10,'角色保存','2','/admin/role/save',1, '保存角色', 1);
+
+
+
+TRUNCATE TABLE `role`;
+INSERT INTO `sshe`.`role` (`id`, `role_code`, `role_name`, `description`, `is_valid`) VALUES ('1', 'role_common', '一般角色', '拥有基本权限', '1');
+INSERT INTO `sshe`.`role` (`id`, `role_code`, `role_name`, `description`, `is_valid`) VALUES ('2', 'role_system', '系统角色', '拥有所有权限', '1');
