@@ -64,6 +64,7 @@
 <script src="<%=request.getContextPath()%>/assets/global/jquery/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/global/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/global/js/js.cookie.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/assets/global/jquery-validation/js/jquery.validate.min.js" type="text/javascript" ></script>
 <script src="<%=request.getContextPath()%>/assets/global/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/global/jquery/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/assets/global/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>

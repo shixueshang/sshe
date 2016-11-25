@@ -17,6 +17,7 @@
                 <li><span class="font-dark">新增用户</span></li>
             </ul>
             <div class="row">
+                <div class="col-md-3"></div>
                 <div class="col-md-4">
                     <div class="portlet box green">
                         <div class="portlet-title">
@@ -34,38 +35,32 @@
                                         表单内容验证成功!
                                     </div>
                                     <div class="form-group">
-                                        <label  class="control-label">登录名<span class="required" aria-required="true">*</span></label>
-
-                                            <input type="text" name="loginName" data-required="1" maxlength="40"  class="form-control" value="${user.loginName}" >
-                                            <span class="help-inline"></span>
-
+                                        <label class="control-label">登录名<span class="required" aria-required="true">*</span></label>
+                                        <input type="text" name="loginName" maxlength="40"  class="form-control input-medium" value="${user.loginName}" >
+                                        <span class="help-inline"></span>
                                     </div>
 
                                     <div class="form-group">
-                                        <label  class="control-label">用户名</label>
-
-                                            <input type="text" name="displayName" maxlength="40"  class="form-control" value="${user.displayName}" >
-                                            <span class="help-inline"></span>
-
+                                        <label class="control-label">用户名<span class="required" aria-required="true">*</span></label>
+                                        <input type="text" name="displayName" maxlength="40"  class="form-control input-medium" value="${user.displayName}" >
+                                        <span class="help-inline"></span>
                                     </div>
 
                                     <div class="form-group">
-                                        <label  class="control-label">所属角色</label>
-
-                                            <select  name="roleId" class="mt-multiselect btn btn-default" multiple="multiple" data-label="left" data-width="100%" data-filter="true" data-action-onchange="true">
-                                                <c:forEach items="${roles}" var="role">
-                                                    <option value="${role.id}">${role.roleName}</option>
-                                                </c:forEach>
-                                            </select>
-                                            <span class="help-inline"></span>
-
+                                        <label class="control-label col-md-12" style="margin-left: -15px">所属角色<span class="required" aria-required="true">*</span></label>
+                                        <select id="roleIds" name="roleIds" class="mt-multiselect btn btn-default" multiple="multiple" data-label="left" data-width="240px" data-filter="true" data-action-onchange="true">
+                                            <c:forEach items="${roles}" var="role">
+                                                <option value="${role.id}">${role.roleName}</option>
+                                            </c:forEach>
+                                        </select>
+                                        <span class="help-inline"></span>
                                     </div>
 
                                 </div>
 
                                 <div class="form-actions">
                                     <div class="row">
-                                        <div class="col-md-offset-3 col-md-9">
+                                        <div class="col-md-offset-5 col-md-9">
                                             <input type="hidden" name="id" value="${user.id}">
                                             <button type="submit" class="btn green">确定</button>
                                         </div>
@@ -85,9 +80,11 @@
 <script>
     $(function(){
 
-        $(".checkbox").click(function(){
-            console.info($(this))
-        });
+        var roleIds = '${user.roleIds}';
+        if(roleIds != ''){
+            roleIds = $.parseJSON(roleIds);
+        }
+        $('#roleIds').val(roleIds);
 
         var user_form = $('#user_form');
         var error = $('.alert-danger', user_form);
@@ -99,11 +96,26 @@
             focusInvalid: false,
             ignore: "",
             messages: {
-                loginName:{required:"登录名不能为空！"}
+                loginName:{required:"登录名不能为空！", remote:jQuery.validator.format("登录名已经存在")}
             },
             rules :{
                 loginName : {
-                    required : true
+                    required : true,
+                    remote: {
+                        url: "/admin/user/isLoginNameExists",
+                        type: "get",
+                        data: {
+                            loginName: function() {
+                                var old_name = '${user.loginName}';
+                                var new_name = $("input[name='loginName']").val();
+                                if(old_name == new_name){
+                                    return old_name + 'no check';
+                                }else {
+                                    return new_name;
+                                }
+                            }
+                        }
+                    }
                 },
                 displayName : {
                     required : true

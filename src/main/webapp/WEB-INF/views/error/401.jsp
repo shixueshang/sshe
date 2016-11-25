@@ -15,10 +15,10 @@
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="row">
-                <div class="col-md-12 page-404">
-                    <div class="number font-green">404</div>
+                <div class="col-md-12 ">
+                    <div class="number font-green" style="font-size: 20px;">401</div>
                     <div class="details">
-                        <h3>Oops! You're lost.</h3>
+                        <h3>Oops! You need Login First.</h3>
                     </div>
 
                 </div>

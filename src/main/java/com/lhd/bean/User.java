@@ -1,6 +1,7 @@
 package com.lhd.bean;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -24,7 +25,7 @@ public class User implements java.io.Serializable {
     private boolean isValid = true;
 
     @Transient
-    private Integer roleId;
+    private List<Integer> roleIds;
 
     public Integer getId() {
         return id;
@@ -66,11 +67,11 @@ public class User implements java.io.Serializable {
         isValid = valid;
     }
 
-    public Integer getRoleId() {
-        return roleId;
+    public List<Integer> getRoleIds() {
+        return roleIds;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setRoleIds(List<Integer> roleIds) {
+        this.roleIds = roleIds;
     }
 }

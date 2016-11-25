@@ -9,18 +9,16 @@
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/pages/css/error.min.css" />
 
-
 <div class="page-container">
     <jsp:include page="../include/left.jsp"/>
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="row">
-                <div class="col-md-12 page-404">
-                    <div class="number font-green">404</div>
+                <div class="col-md-12 ">
+                    <div class="number font-green" style="font-size: 20px;">400</div>
                     <div class="details">
-                        <h3>Oops! You're lost.</h3>
+                        <h3>Oops! The Request is Bad.</h3>
                     </div>
-
                 </div>
             </div>
         </div>

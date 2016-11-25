@@ -47,9 +47,10 @@
                                             </c:choose>
                                         </td>
                                         <td>
-                                            <a href="<%=request.getContextPath()%>/user/detail/${user.id}" class="btn green"><span class="glyphicon glyphicon-edit"></span>编辑</a>
-                                            <a href="<%=request.getContextPath()%>/user/delete/${user.id}" class="btn green"><span class="glyphicon glyphicon-trash"></span>删除</a>
-
+                                            <c:if test="${user.valid == true}">
+                                                <a href="<%=request.getContextPath()%>/admin/user/detail/${user.id}" class="btn green"><span class="glyphicon glyphicon-edit"></span>编辑</a>
+                                                <a href="<%=request.getContextPath()%>/admin/user/delete/${user.id}" class="btn green"><span class="glyphicon glyphicon-trash"></span>禁用</a>
+                                            </c:if>
                                         </td>
                                     </tr>
                                 </c:forEach>

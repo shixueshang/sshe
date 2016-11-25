@@ -38,9 +38,9 @@ public class Constants {
         public static int NEED_LOGIN = 401;
 
         /**
-         * 普通失败，message中带原因
+         * 禁止访问
          */
-        public static int FAILED = 403;
+        public static int FORBIDDEN = 403;
 
         /**
          * 未找到请求页面

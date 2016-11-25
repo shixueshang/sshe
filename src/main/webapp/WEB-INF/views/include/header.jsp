@@ -6,6 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>sshe</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="<%=request.getContextPath()%>/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" media="screen"/>
     <link href="<%=request.getContextPath()%>/static/images/favicon.ico" rel="bookmark" type="image/x-icon" media="screen"/>
 
