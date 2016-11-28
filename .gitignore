@@ -1,0 +1,22 @@
+# HEAD
+*.class
+
+# Java
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# idea
+*.iml
+.idea/
+
+# eclipse
+*.project
+*.classpath
+.settings/
+*target/
+.externalToolBuilders/
+
