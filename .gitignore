@@ -17,6 +17,11 @@
 *.project
 *.classpath
 .settings/
-*target/
+*/target/
+*/logs/
+/bin/
+*.ipr
+*.iws
+*.pyc
+*/*.pyc
 .externalToolBuilders/
-
