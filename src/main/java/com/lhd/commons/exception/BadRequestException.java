@@ -16,7 +16,7 @@ public class BadRequestException extends RuntimeException {
 	public BadRequestException(String message) {
 		super(message);
 		this.result = new AjaxJson();
-		this.result.setCode(Constants.JSON_RESULT.BAD_REQUEST);
+		this.result.setCode(Constants.HttpStatus.BAD_REQUEST);
 		this.result.setMessage(message);
 	}
 

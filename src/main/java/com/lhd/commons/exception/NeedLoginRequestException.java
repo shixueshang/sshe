@@ -17,7 +17,7 @@ public class NeedLoginRequestException extends RuntimeException {
 	public NeedLoginRequestException(String message) {
 		super(message);
 		this.result = new AjaxJson();
-		this.result.setCode(Constants.JSON_RESULT.NEED_LOGIN);
+		this.result.setCode(Constants.HttpStatus.NEED_LOGIN);
 		this.result.setMessage(message);
 	}
 

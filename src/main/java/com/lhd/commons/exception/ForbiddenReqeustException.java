@@ -14,7 +14,7 @@ public class ForbiddenReqeustException extends RuntimeException {
 
 	public ForbiddenReqeustException(String message) {
 		super(message);
-        this.result.setCode(Constants.JSON_RESULT.FORBIDDEN);
+        this.result.setCode(Constants.HttpStatus.FORBIDDEN);
         this.result.setMessage(message);
 	}
 

@@ -17,7 +17,7 @@ public class NotFoundRequestException extends RuntimeException {
 	public NotFoundRequestException(String message) {
 		super(message);
 		this.result = new AjaxJson();
-		this.result.setCode(Constants.JSON_RESULT.NOT_FOUND);
+		this.result.setCode(Constants.HttpStatus.NOT_FOUND);
 		this.result.setMessage(message);
 	}
 

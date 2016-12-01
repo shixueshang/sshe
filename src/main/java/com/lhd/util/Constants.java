@@ -21,7 +21,7 @@ public class Constants {
      * @author lihongde
      *
      */
-    public static class JSON_RESULT{
+    public static class HttpStatus{
         /**
          * 成功
          */
