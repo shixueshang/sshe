@@ -14,7 +14,7 @@
     </bean>
 
     <!-- 項目自定义的Realm -->
-    <bean id="shiroDbRealm" class="com.lhd.commons.shiro.ShiroDbRealm"/>
+    <bean id="shiroDbRealm" class="com.lhd.web.shiro.ShiroDbRealm"/>
 
     <!-- Shiro Filter -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
