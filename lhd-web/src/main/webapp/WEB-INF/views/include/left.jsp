@@ -3,6 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
+<%
+    String uri = (String) request.getAttribute("uri");
+%>
+
+
 <div class="page-sidebar-wrapper">
     <div class="page-sidebar navbar-collapse collapse">
         <ul class="page-sidebar-menu">
@@ -37,4 +42,20 @@
 
     </div>
 </div>
+
+
+<script>
+
+    var url = '${uri}';
+    var obj = $('a[href*="'+url+'"]');
+    $.each(obj, function(i, v){
+        var _this = $(v), _parent = _this.closest('ul'), _p_parent = _parent.closest('li');
+        _p_parent.addClass('active').addClass('open');
+        _this.closest('li').addClass('active').addClass('open');
+        _parent.show();
+
+        return false;
+    });
+
+</script>
 

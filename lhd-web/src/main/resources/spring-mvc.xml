@@ -42,6 +42,12 @@
 		</property>
 	</bean>
 
+    <mvc:interceptors>
+        <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+        <bean class="com.lhd.web.interceptor.ContextInterceptor"/>
+
+    </mvc:interceptors>
+
 	<!-- 文件上传 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8" />
