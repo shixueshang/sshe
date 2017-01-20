@@ -52,6 +52,7 @@
         var _this = $(v), _parent = _this.closest('ul'), _p_parent = _parent.closest('li');
         _p_parent.addClass('active').addClass('open');
         _this.closest('li').addClass('active').addClass('open');
+        _parent.prev('a').find('span').addClass('open');
         _parent.show();
 
         return false;
