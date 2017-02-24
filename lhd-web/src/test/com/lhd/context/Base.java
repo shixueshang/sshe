@@ -1,4 +1,4 @@
-package lhd.context;
+package com.lhd.context;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;

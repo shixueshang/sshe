@@ -1,8 +1,8 @@
-package lhd;
+package com.lhd;
 
 import com.lhd.core.bean.Dictionary;
 import com.lhd.core.enums.DictType;
-import lhd.context.Base;
+import com.lhd.context.Base;
 import com.lhd.core.service.DictionaryService;
 import org.junit.Test;
 
