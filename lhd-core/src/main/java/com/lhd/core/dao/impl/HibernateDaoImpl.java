@@ -22,8 +22,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class HibernateDaoImpl implements HibernateDao {
     private static final Pattern ORDER = Pattern.compile(" order +by +.*$", 2);
-    private static final Pattern SELECT = Pattern.compile("^(\\s*select\\s*){0,1}(.+?)\\s+from",
-            2);
+    private static final Pattern SELECT = Pattern.compile("^(\\s*select\\s*){0,1}(.+?)\\s+from", 2);
 
     private static final Pattern FETCH = Pattern.compile(" fetch ", 2);
     private static final Pattern PLACE_HOLDER = Pattern.compile("\\?");
